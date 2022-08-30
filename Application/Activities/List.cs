@@ -31,6 +31,7 @@ namespace Application.Activities
                 var activities = await _context.Activities
                     .Include(a => a.Attendees)
                     .ThenInclude(aa => aa.AppUser)
+                    .ThenInclude(aa => aa.Photos)
                     .ToListAsync(cancellationToken);
 
                 var activitiesToRetun = _mapper.Map<List<ActivityDto>>(activities);
